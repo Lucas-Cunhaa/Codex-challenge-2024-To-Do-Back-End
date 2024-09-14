@@ -1,2 +1,6 @@
 #misc 
 .env
+.env.local
+.env.devlopment.local
+.env.test.local
+.env.production.local

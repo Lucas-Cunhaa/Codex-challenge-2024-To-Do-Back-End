@@ -2,16 +2,16 @@ import * as dotenv from "dotenv"
 import { MongoClient, ServerApiVersion, Db, Collection } from "mongodb";
 dotenv.config({ path: "./.env"});
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-
+console.log(process.env.MONGO_URI)
 class MongoDB {
 
   private client!: MongoClient; 
   private db!: Db; 
   private collection!: Collection;
-  private uri: string = process.env.MONGO_URI as string;
+  private uri: string = "mongodb+srv://lucasgalvao:vqAEemxs76WHtdIj@cluster0.1g0jd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" //process.env.MONGO_URI as string; 
   private isConnected = false ;
 
-  cosntructor() {
+  constructor() {
     this.client = new MongoClient(this.uri, {
       serverApi: {
         version: ServerApiVersion.v1,
@@ -31,12 +31,11 @@ class MongoDB {
         // Send a ping to confirm a successful connection
         await this.client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-        return this.client
+        this.isConnected = true
       }
+        return this.client
     } catch (err) {
       console.error("Error on connection", err)
-      // Ensures that the client will close when you finish/error
-    
     }
   }
   public async disconnect() {

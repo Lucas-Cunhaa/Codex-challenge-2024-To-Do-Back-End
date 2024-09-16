@@ -4,10 +4,13 @@
     "@types/express": "^4.17.21",
     "@types/node": "^22.5.5",
     "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
   },
+ "scripts": {
+  "start": "nodemon --ext ts --exec \"ts-node app.ts\""
+},
   "dependencies": {
-    "cores": "^0.8.5",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",

@@ -15,11 +15,15 @@ export class UserDTO {
         email: string,
         passwordHash: string,
     ) {
+        if (!name || !gender || !email || !passwordHash) {
+            throw new Error("Invalid values provided for UserDTO");
+        }
+
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.email = email;
         this.passwordHash = passwordHash;
-        this.tasks = []
+        this.tasks = [];
     }
 }

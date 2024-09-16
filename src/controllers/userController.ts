@@ -13,8 +13,8 @@ export const registerUser = async (req: Request, res: Response) => {
 
         const data = await insertUser(user)
 
-        res.status(200).json({ message: "User has been registered", sucess: true })
-    } catch (error) {
+        res.status(200).json({ message: "User has been registered", sucess: true, data: data })
+    } catch (err) {
         res.status(404).json({ message: "Error on creating user", sucess: false })
     }
 }

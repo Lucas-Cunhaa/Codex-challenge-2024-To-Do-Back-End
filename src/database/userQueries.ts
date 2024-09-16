@@ -15,7 +15,7 @@ export const insertUser = async (document: UserInterface ) => {
     }
 }
 
-export const getUserByEmail = async (email : string, password: string) => {
+export const getUserByEmail = async (email : string) => {
     try {
         const request = await collection.findOne({ email })
         return request

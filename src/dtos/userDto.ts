@@ -1,3 +1,4 @@
+import { TaskDTO } from "./taskDto";
 export class UserDTO {
     public name: string;
     public gender: string;
@@ -12,7 +13,7 @@ export class UserDTO {
         age: number,
         email: string,
         passwordHash: string,
-        tasks: TaskDTO[]
+        tasks: TaskDTO[] | []
     ) {
         this.name = name;
         this.gender = gender;
@@ -20,11 +21,5 @@ export class UserDTO {
         this.email = email;
         this.passwordHash = passwordHash;
         this.tasks = tasks;
-    }
-
-    // Método exemplo de validação
-    public validateEmail(): boolean {
-        // Lógica para validar o e-mail
-        return /\S+@\S+\.\S+/.test(this.email);
     }
 }

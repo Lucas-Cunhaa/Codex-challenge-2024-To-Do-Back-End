@@ -26,9 +26,12 @@ export const getUserByEmail = async (email : string) => {
 
 export const getUserByEmailAndPassword = async (email : string, password: string) => {
     try {
-        
+        const request = await collection.findOne(
+            { email, password }, 
+        )
+        return request
     } catch (err) {
-        
+        console.error('Error on getting user by email and password', err)
     }
 }
 

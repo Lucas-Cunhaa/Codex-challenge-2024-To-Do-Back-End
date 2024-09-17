@@ -5,7 +5,7 @@ export class UserDTO {
     public gender: string;
     public age: number;
     public email: string;
-    public passwordHash: string;
+    public password: string;
     public tasks: TaskInterface[] | [];
 
     constructor(
@@ -13,9 +13,9 @@ export class UserDTO {
         gender: string,
         age: number,
         email: string,
-        passwordHash: string,
+        password: string,
     ) {
-        if (!name || !gender || !email || !passwordHash) {
+        if (!name || !gender || !email || !password) {
             throw new Error("Invalid values provided for UserDTO");
         }
 
@@ -23,7 +23,7 @@ export class UserDTO {
         this.gender = gender;
         this.age = age;
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.tasks = [];
     }
 }

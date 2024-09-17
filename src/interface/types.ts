@@ -10,7 +10,7 @@ export interface UserInterface {
     gender: string; 
     age: number; 
     email: string; 
-    passwordHash: string;
+    password: string;
     tasks: TaskInterface[] | []
 }
 

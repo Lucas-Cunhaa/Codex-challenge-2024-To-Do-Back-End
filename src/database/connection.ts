@@ -8,7 +8,7 @@ class MongoDB {
   private client!: MongoClient; 
   private db!: Db; 
   private collection!: Collection;
-  private uri: string = "mongodb+srv://lucasgalvao:vqAEemxs76WHtdIj@cluster0.1g0jd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" //process.env.MONGO_URI as string; 
+  private uri: string = process.env.MONGO_URI as string; 
   private isConnected = false ;
 
   constructor() {

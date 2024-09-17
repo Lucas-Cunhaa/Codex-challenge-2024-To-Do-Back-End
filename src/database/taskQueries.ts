@@ -23,7 +23,7 @@ export const insertTaskByUserId = async (id : string, task: any) => {
     }
 }
 
-export const deleteTaskById = async (id : string, status: string) => {
+export const deleteTaskById = async (id : string) => {
     const objectId = getObjectId(id);
     try {
         const request = await collection.deleteOne(

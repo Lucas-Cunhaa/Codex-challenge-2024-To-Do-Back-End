@@ -7,14 +7,14 @@ async function initialize() {
     await mongoDB.connect(); 
 };
 
-export const insertTaskByUserId = (id : string, task: any) => {
+export const insertTaskByUserId = async (id : string, task: any) => {
     
     try {
         const objectId = getObjectId(id);
 
         const request = collection.findOneAndUpdate(
             {_id: objectId}, 
-            {$push: {tasks: task } }
+            {$push: {tasks: task } }, 
         );
 
         return request;

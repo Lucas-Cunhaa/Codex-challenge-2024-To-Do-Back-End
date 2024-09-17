@@ -12,5 +12,12 @@ export interface UserInterface {
     email: string; 
     password: string;
     tasks: TaskInterface[] | []
+    photo: string
+}
+
+export interface ChangeInterface {
+    name?: string;
+    age?: number;
+    photo?: string; 
 }
 

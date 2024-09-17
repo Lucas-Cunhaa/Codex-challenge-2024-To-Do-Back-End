@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { insertUser, getUserByEmail ,getUserByEmailAndPassword } from "../database/userQueries"
+import { insertUser, getUserByEmail } from "../database/userQueries"
 import { hash } from "bcryptjs"
 import { UserDTO } from "../dtos/userDto"
 import bcrypt from 'bcryptjs';
@@ -37,7 +37,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
         if (!passwordMatch) return res.status(401).json({ message: "Invalid credentials", success: false });
         
-        return res.status(200).json({ message: "Login successful", data: user._id, success: true });
+        return res.status(200).json({ message: "Login successful", data: user, success: true });
     } catch (error) {
         console.error("Error during login:", error);
         return res.status(500).json({ message: "Login operation error", success: false });

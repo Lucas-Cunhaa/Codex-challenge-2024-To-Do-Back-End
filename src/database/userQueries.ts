@@ -19,16 +19,16 @@ export const insertUser = async (document: UserInterface ) => {
 
 export const getUserByEmail = async (email : string) => {
     try {
-        const request = await collection.findOne({ email })
-        return request
+        const request = await collection.findOne({ email });
+        return request;
     } catch (err) {
-        console.error('Error on getting user by email', err)
+        console.error('Error on getting user by email', err);
     }
 };
 
 export const updateUserById = async (id: string, changes: ChangeInterface) => {
     try {
-        const objectId = new ObjectId(id)
+        const objectId = new ObjectId(id);
 
         const updateFields: any = {};
 
@@ -41,7 +41,7 @@ export const updateUserById = async (id: string, changes: ChangeInterface) => {
             { $set: updateFields }
         );
 
-        return request
+        return request;
 
     } catch (error) {
           console.error('Error updating user', error);

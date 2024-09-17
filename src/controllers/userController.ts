@@ -4,7 +4,6 @@ import { hash } from "bcryptjs";
 import { UserDTO } from "../dtos/userDto";
 import bcrypt from 'bcryptjs';
 
-
 export const registerUser = async (req: Request, res: Response) => {
     try {
         const {name, gender, age, email, password} = req.body;

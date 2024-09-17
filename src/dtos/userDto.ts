@@ -7,7 +7,7 @@ export class UserDTO {
     public email: string;
     public password: string;
     public tasks: TaskInterface[] | [];
-    public photo: string
+    public photo: string;
 
     constructor(
         name: string,
@@ -26,6 +26,6 @@ export class UserDTO {
         this.email = email;
         this.password = password;
         this.tasks = [];
-        this.photo = ""
+        this.photo = "";
     }
-}
+};

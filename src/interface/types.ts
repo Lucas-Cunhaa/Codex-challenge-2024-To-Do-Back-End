@@ -4,7 +4,8 @@ export interface TaskInterface {
     date: Date,
     isCompleted: boolean,
     description: string,
-}
+};
+
 export interface UserInterface {
     name: string; 
     gender: string; 
@@ -13,11 +14,11 @@ export interface UserInterface {
     password: string;
     tasks: TaskInterface[] | []
     photo: string
-}
+};
 
 export interface ChangeInterface {
     name?: string;
     age?: number;
     photo?: string; 
-}
+};
 

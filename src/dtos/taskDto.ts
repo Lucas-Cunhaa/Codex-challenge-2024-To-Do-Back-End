@@ -17,16 +17,12 @@ export class TaskDTO {
         if (!name || !stringDate || !stringIsCompleted || !description) throw new Error("Invalid values provided for TaskDTO");
 
         this.name = name;
-        this.date = this.setDate(stringDate);
+        this.date = new Date (stringDate);
         this.isCompleted = this.setIsCompleted(stringIsCompleted);
         this.description = description;
         this.id = this.setId();
     }
-    setDate = (stringDate: string) => {
-        const date = new Date(stringDate);
-        return date;
-    };
-
+    
     setIsCompleted = (stringIsCompleted: string) => {
         return stringIsCompleted === "true";
     };

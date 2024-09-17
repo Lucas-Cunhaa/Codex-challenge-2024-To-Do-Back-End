@@ -8,7 +8,6 @@ async function initialize() {
 };
 
 export const insertTaskByUserId = async (id : string, task: any) => {
-    
     try {
         const objectId = getObjectId(id);
 
@@ -23,5 +22,18 @@ export const insertTaskByUserId = async (id : string, task: any) => {
         console.error("Error on inseting task", err);
     }
 }
-    
+
+export const deleteTaskById = async (id : string, status: string) => {
+    const objectId = getObjectId(id);
+    try {
+        const request = await collection.deleteOne(
+            {_id: objectId}
+        )
+
+        return request
+    } catch (err) {
+        console.error("Erronr on deleting task by id", err)
+    }
+};
+
 initialize();

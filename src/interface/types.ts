@@ -1,5 +1,4 @@
 export interface TaskInterface {
-    id: number;
     name: string,
     date: Date,
     isCompleted: boolean,

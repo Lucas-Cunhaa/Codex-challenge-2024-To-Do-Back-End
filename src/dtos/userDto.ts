@@ -16,9 +16,8 @@ export class UserDTO {
         email: string,
         password: string,
     ) {
-        if (!name || !gender || !email || !password) {
-            throw new Error("Invalid values provided for UserDTO");
-        }
+        if (!name || !gender || !email || !password) throw new Error("Invalid values provided for UserDTO");
+        
 
         this.name = name;
         this.gender = gender;

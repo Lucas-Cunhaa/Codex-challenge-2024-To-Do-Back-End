@@ -2,6 +2,7 @@ import { mongoDB } from "./connection";
 import { UserInterface } from "../interface/types";
 import { ChangeInterface } from "../interface/types";
 import { ObjectId } from "mongodb";
+import { getObjectId } from "./getObjectId";
 const collection = mongoDB.getCollection();
 
 async function initialize() {
@@ -28,7 +29,7 @@ export const getUserByEmail = async (email : string) => {
 
 export const updateUserById = async (id: string, changes: ChangeInterface) => {
     try {
-        const objectId = new ObjectId(id);
+        const objectId = getObjectId(id)
 
         const updateFields: any = {};
 

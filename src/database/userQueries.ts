@@ -26,8 +26,10 @@ export const getUserByEmail = async (email : string) => {
     }
 };
 
-export const updateUserById = async (id: ObjectId, changes: ChangeInterface) => {
+export const updateUserById = async (id: string, changes: ChangeInterface) => {
     try {
+        const objectId = new ObjectId(id)
+
         const updateFields: any = {};
 
         if (changes.name !== undefined) updateFields.name = changes.name;
@@ -35,9 +37,11 @@ export const updateUserById = async (id: ObjectId, changes: ChangeInterface) => 
         if (changes.photo !== undefined) updateFields.photo = changes.photo;
 
         const request = await collection.updateOne(
-            { _id: id },
+            { _id: objectId },
             { $set: updateFields }
         );
+
+        return request
 
     } catch (error) {
           console.error('Error updating user', error);

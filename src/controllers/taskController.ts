@@ -23,9 +23,10 @@ export const addTask = async (req: Request, res: Response) => {
 
 export const deleteTask = async (req: Request, res: Response) => { 
     try {
-        const id = req.params.id;
+        const userId = req.params.userId;
+        const taskId = req.params.taskId;
 
-        const data = await deleteTaskById(id);
+        const data = await deleteTaskById(userId, taskId);
     
         if(!data) return res.status(400).json({ message: "Error while deleting the task", sucess: false})
     

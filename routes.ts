@@ -8,6 +8,6 @@ route.post("/app/login", loginUser);
 route.put("/app/editProfile/:id", updateProfile);
 
 route.post("/app/addTask/:id", addTask);
-route.delete("/app/deleteTask/:id", deleteTask);
+route.delete("/app/deleteTask/:userId/:taskId", deleteTask);
 
 export default route;

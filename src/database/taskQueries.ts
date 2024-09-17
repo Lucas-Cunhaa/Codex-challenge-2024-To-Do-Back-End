@@ -23,12 +23,29 @@ export const insertTaskByUserId = async (id : string, task: any) => {
     }
 }
 
-export const deleteTaskById = async (id : string) => {
-    const objectId = getObjectId(id);
+export const deleteTaskById = async (userId: string, taskId : string) => {
+
+    const userObjectId = getObjectId(userId);
+    const taskObjectId = getObjectId(taskId);
     try {
-        const request = await collection.deleteOne(
-            {_id: objectId}
-        )
+        const request = await collection.updateOne(
+            { _id: userObjectId },
+            [
+              {
+                $set: {
+                  tasks: {
+                    $filter: {
+                      input: '$tasks',
+                      as: 'task',
+                      cond: { $ne: ['$$task.id', taskObjectId] }
+                    }
+                  }
+                }
+              }
+            ]
+          );
+          
+        if (request.modifiedCount === 0) throw new Error("Task not found or user doesn't exist");
 
         return request
     } catch (err) {

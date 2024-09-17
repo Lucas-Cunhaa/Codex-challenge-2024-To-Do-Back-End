@@ -1,8 +1,4 @@
 import { mongoDB } from "./connection";
-import { UserInterface } from "../interface/types";
-import { TaskDTO } from "../dtos/taskDto";
-import { ChangeInterface } from "../interface/types";
-import { ObjectId } from "mongodb";
 import { getObjectId } from "./getObjectId";
 
 const collection = mongoDB.getCollection();

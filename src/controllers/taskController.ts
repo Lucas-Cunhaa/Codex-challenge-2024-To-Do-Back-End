@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { insertTaskByUserId, deleteTaskById, updateTaskById } from "../database/taskQueries";
+import { insertTaskByUserId, deleteTaskById, updateStatusTaskById } from "../database/taskQueries";
 import { TaskDTO } from "../dtos/taskDto";
 
 
@@ -19,26 +19,23 @@ export const addTask = async (req: Request, res: Response) => {
         console.error("Error while adding the task", err)
         res.status(404).json({ message: "Error while adding the task", sucess: false});
     }
-}
+};
 
-export const updateTask = async (req: Request, res: Response) => { 
+export const changeStatusTask = async (req: Request, res: Response) => {
     try {
-        const { userId, taskId } = req.params;
+        const {userId, taskId} = req.params; 
+        const isCompleted = req.body.isCompleted;
+        const status = isCompleted === "true"
+        const data = await updateStatusTaskById(userId, taskId, status)
 
-        const updatedFields: Partial<TaskDTO> = req.body;
+        if(!data) return res.status(400).json({ message: "Error while changing status task", sucess: false});
 
-        const data = await updateTaskById(userId, taskId, updatedFields);
-    
-        if(!data) return res.status(400).json({ message: "Error while updating the task", sucess: false});
-    
-        res.status(200).json({ message: "Task updated sucefully", sucess: true});
-
+        res.status(200).json({ message: "Status task updated sucefully", sucess: true});
     } catch (err) {
-        console.error("Error while editing task", err); 
-        res.status(404).json({ message: "Error while editing task", sucess: false})
+        console.error("Error while changing the status task", err)
+        res.status(404).json({ message: "Error  while changing the status task ", sucess: false});
     }
-   
-}
+};
 
 export const deleteTask = async (req: Request, res: Response) => { 
     try {
@@ -53,5 +50,4 @@ export const deleteTask = async (req: Request, res: Response) => {
         console.error("Error while deleting task", err); 
         res.status(404).json({ message: "Error while deleting task", sucess: false})
     }
-   
-}
+};

@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 import { MongoClient, ServerApiVersion, Db, Collection } from "mongodb";
 dotenv.config({ path: "./.env"});
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-console.log(process.env.MONGO_URI)
+
 class MongoDB {
 
   private client!: MongoClient; 

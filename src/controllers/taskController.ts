@@ -24,9 +24,14 @@ export const addTask = async (req: Request, res: Response) => {
 export const changeStatusTask = async (req: Request, res: Response) => {
     try {
         const {userId, taskId} = req.params; 
-        const isCompleted = req.body.isCompleted;
+        let {name, Date, isCompleted, description} = req.body;
+        console.log(name, Date, isCompleted, description)
+
+        if(isCompleted !== null || isCompleted !== undefined) isCompleted = isCompleted === "true"; 
+        if(Date) Date = new Date(Date);
+
         const status = isCompleted === "true"
-        const data = await updateStatusTaskById(userId, taskId, status)
+        const data = await updateStatusTaskById(userId, taskId, name, Date, isCompleted, description)
 
         if(!data) return res.status(400).json({ message: "Error while changing status task", sucess: false});
 

@@ -25,7 +25,7 @@ export const insertTaskByUserId = async (id : string, task: any) => {
 }
 ;
 
-export const updateStatusTaskById = async (userId: string, taskId : string, isCompleted: boolean) => {
+export const updateStatusTaskById = async (userId: string, taskId : string, name: any, Date: any, isCompleted: any, description: any) => {
     try {
         const userObjectId = getObjectId(userId);
         const taskObjectId = getObjectId(taskId);
@@ -46,9 +46,46 @@ export const updateStatusTaskById = async (userId: string, taskId : string, isCo
                     [
                       {
                         $mergeObjects: [
-                          { $arrayElemAt: ['$tasks', { $indexOfArray: ['$tasks.id', taskObjectId] }] },
                           {
-                            isCompleted: isCompleted
+                            $arrayElemAt: ['$tasks', { $indexOfArray: ['$tasks.id', taskObjectId] }]
+                          },
+                          {
+                            isCompleted: {
+                              $cond: {
+                                if: { $ne: [isCompleted, null] },
+                                then: isCompleted,
+                                else: {
+                                  $arrayElemAt: ['$tasks.isCompleted', { $indexOfArray: ['$tasks.id', taskObjectId] }]
+                                }
+                              }
+                            },
+                            Date: {
+                              $cond: {
+                                if: { $ne: [Date, null] },
+                                then: Date,
+                                else: {
+                                  $arrayElemAt: ['$tasks.Date', { $indexOfArray: ['$tasks.id', taskObjectId] }]
+                                }
+                              }
+                            },
+                            name: {
+                              $cond: {
+                                if: { $ne: [name, null] },
+                                then: name,
+                                else: {
+                                  $arrayElemAt: ['$tasks.name', { $indexOfArray: ['$tasks.id', taskObjectId] }]
+                                }
+                              }
+                            },
+                            description: {
+                              $cond: {
+                                if: { $ne: [description, null] },
+                                then: description,
+                                else: {
+                                  $arrayElemAt: ['$tasks.description', { $indexOfArray: ['$tasks.id', taskObjectId] }]
+                                }
+                              }
+                            }
                           }
                         ]
                       }
@@ -59,6 +96,8 @@ export const updateStatusTaskById = async (userId: string, taskId : string, isCo
             }
           ]
         );
+    
+        
         
         return request;
 

@@ -1,4 +1,3 @@
-import { TaskDTO } from "../dtos/taskDto";
 import { mongoDB } from "./connection";
 import { getObjectId } from "./getObjectId";
 
@@ -96,9 +95,7 @@ export const updateTaskById = async (userId: string, taskId : string, name: any,
             }
           ]
         );
-    
-        
-        
+            
         return request;
 
     } catch (err) {

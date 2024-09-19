@@ -21,9 +21,20 @@ export const insertTaskByUserId = async (id : string, task: any) => {
     } catch (err) {
         console.error("Error on inseting task", err);
     }
-}
-;
+};
 
+export const getAllTasks = async (userId: string) => {
+  try {
+    const userObjectId = getObjectId(userId);
+    const request = await collection.find({_id: userObjectId}, {projection: {tasks: 1} });
+
+    return request;
+
+  } catch (err) {
+    console.error("Error while getting all the tasks", err)
+  }
+ 
+}
 export const updateTaskById = async (userId: string, taskId : string, name: any, Date: any, isCompleted: any, description: any) => {
     try {
         const userObjectId = getObjectId(userId);
@@ -95,7 +106,7 @@ export const updateTaskById = async (userId: string, taskId : string, name: any,
             }
           ]
         );
-            
+
         return request;
 
     } catch (err) {

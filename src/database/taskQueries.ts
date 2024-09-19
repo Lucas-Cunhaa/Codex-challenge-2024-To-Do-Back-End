@@ -25,7 +25,7 @@ export const insertTaskByUserId = async (id : string, task: any) => {
 }
 ;
 
-export const updateStatusTaskById = async (userId: string, taskId : string, name: any, Date: any, isCompleted: any, description: any) => {
+export const updateTaskById = async (userId: string, taskId : string, name: any, Date: any, isCompleted: any, description: any) => {
     try {
         const userObjectId = getObjectId(userId);
         const taskObjectId = getObjectId(taskId);

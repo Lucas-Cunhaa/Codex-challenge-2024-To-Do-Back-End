@@ -11,7 +11,7 @@ export const insertTaskByUserId = async (id : string, task: any) => {
     try {
         const objectId = getObjectId(id);
 
-        const request = collection.findOneAndUpdate(
+        const request = await collection.findOneAndUpdate(
             {_id: objectId}, 
             {$push: {tasks: task } }, 
         );
@@ -26,7 +26,7 @@ export const insertTaskByUserId = async (id : string, task: any) => {
 export const getAllTasks = async (userId: string) => {
   try {
     const userObjectId = getObjectId(userId);
-    const request = await collection.find({_id: userObjectId}, {projection: {tasks: 1} });
+    const request = await collection.find({_id: userObjectId}, {projection: {tasks: 1} }).toArray();
 
     return request;
 

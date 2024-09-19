@@ -23,7 +23,7 @@ export const addTask = async (req: Request, res: Response) => {
 export const getUserTasks = async (req: Request, res: Response) => {
     try {
         const id = req.params.id; 
-
+        
         const data = await getAllTasks(id)
 
         if(!data) return res.status(404).json({ message: "None task has been founded", sucess: false});

@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import route from "./routes";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -10,6 +13,8 @@ app.use(cors());
 
 app.use(route);
 
-app.listen(3030, () => {
-    console.log("Server running on port 3030");
+const port = process.env.PORT || 3030;
+
+app.listen( port, () => {
+    console.log("Server running on port", port);
 });

@@ -48,22 +48,21 @@ Para executar este projeto localmente, você precisará ter instalado:
 2. **Instale as Dependências:**
 
     ```bash
-        Copy code
-        npm install
-        ```
+    Copy code
+    npm install
+
 3. **Configure as Variáveis de Ambiente:**
 
 Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
 
     ```bash
-        PORT=3000
-        MONGODB_URI=your_mongodb_connection_string
+    PORT=3000
+    MONGODB_URI=your_mongodb_connection_string
     ```
  4. **Inicie o Servidor:**
-
+ 
     ```bash
     npm start
-    ```
 
 ## Endpoints
 

@@ -165,3 +165,6 @@ Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
 **Parâmetros de URL:**
 - userId (string) - ID do usuário.
 - taskId (string) - ID da tarefa.
+
+## Licença
+Este projeto está licenciado sob a [MIT License](./LICENSE).

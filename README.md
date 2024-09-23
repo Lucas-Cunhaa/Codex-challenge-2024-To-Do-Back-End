@@ -53,7 +53,7 @@ Para executar este projeto localmente, você precisará ter instalado:
 
 3. **Configure as Variáveis de Ambiente:**
 
-Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
+    Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
 
     ```bash
     PORT=3000

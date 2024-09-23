@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { insertTaskByUserId, getAllTasks,  deleteTaskById, updateTaskById } from "../database/taskQueries";
 import { TaskDTO } from "../dtos/taskDto";
 
-
 export const addTask = async (req: Request, res: Response) => { 
     try {
         const id = req.params.id;
